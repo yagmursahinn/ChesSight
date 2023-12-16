@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="styles.css">
+<title>Capture Position</title>
+</head>
+<body>
+
+    <ul class="navbar">
+        <img src="logo.png", alt="logo" width="240", height="100">
+        <ul class="menu">
+             <li><a href="home.html">Home</a></li>
+            <li><a href="capture.html">Capture Position</a></li>
+            <li><a href="#">Position and Analysis</a></li>
+            <li><a href="#">Play Against AI</a></li>
+        </ul>
+       
+      </ul>
+
+      <hr>
+
+      <div id="fileSelectionContainer" class="input-container">
+        <label class="input__label" for="file">Select File</label>
+        <div class="flex">
+          <input class="input input--left flex-1" type="text" id="fileName" disabled>
+          <button id="fileMock" class="bttn right active">Browse</button>
+          <input style="display: none;" type="file" id="file">
+        </div>
+      </div>
+    
+      <div id="imagePreview" class="input-container"></div>
+
+        <script>
+              document.getElementById('file').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imagePreview = document.getElementById('imagePreview');
+          const originalImage = document.createElement('img');
+          originalImage.src = e.target.result;
+          originalImage.alt = 'Selected Image';
+
+          imagePreview.appendChild(originalImage);
+
+          // Simulating backend processing delay with setTimeout
+          setTimeout(() => {
+            // Assume processedImageSrc is the URL of the processed image
+            const processedImageSrc = 'path_to_processed_image.jpg';
+            const processedImage = document.createElement('img');
+            processedImage.src = processedImageSrc;
+            processedImage.alt = 'Processed Image';
+
+            imagePreview.appendChild(processedImage);
+          }, 2000); // Replace this delay with your actual backend processing and image generation
+        }
+        reader.readAsDataURL(file);
+
+        // Update the file name in the input field
+        document.getElementById('fileName').value = file.name;
+      }
+    });
+
+    // Trigger file input click when the mock file button is clicked
+    document.getElementById('fileMock').addEventListener('click', function() {
+      document.getElementById('file').click();
+    });
+  </script>
+
+      </div>
+      <footer>
+        <hr>
+     <p>© 2023 ChesSight. All rights reserved.</p>
+      </footer>
+</body>
+</html>
