@@ -96,6 +96,8 @@ nav .wrapper {
 
 .input-container {
     margin-bottom: 20px;
+    margin-top: 5%;
+    margin-left: 15%;
 }
 
 #imagePreview {
@@ -109,7 +111,7 @@ nav .wrapper {
     /* Set your desired width */
     height: auto;
     /* Automatically adjust height based on width */
-    margin-left: 15%;
+    margin-left: 5%;
 }
 
 .files {
